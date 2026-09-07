@@ -10,6 +10,6 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["typescript/**/*.ts", "typescript/**/*.tsx"],
   "exclude": ["node_modules"]
 }
