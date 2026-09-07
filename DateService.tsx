@@ -1,13 +1,6 @@
- // To get the current Time stamp
+export const currentTimeStamp = (): number => Math.floor(Date.now() / 1000);
 
-currentTimeStamp = (): number => {
-    return Math.round((new Date().getTime()) / 1000);
-  }
-
-// to calculate exact age from a YYYY-MM-DD format
-type DateOfBirth = string; // Assuming Date of Birth is a string in "YYYY-MM-DD" format
-
-interface Age {
+export interface Age {
   years: number;
   months: number;
   days: number;
@@ -16,47 +9,72 @@ interface Age {
   seconds: number;
 }
 
-function calculateExactAge(dob: DateOfBirth): Age {
-  const today = new Date();
-  const birthDate = new Date(dob);
+const parseDateOfBirth = (dob: string): Date => {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dob);
 
-  let years = today.getFullYear() - birthDate.getFullYear();
-  let months = today.getMonth() - birthDate.getMonth();
-  let days = today.getDate() - birthDate.getDate();
-  let hours = today.getHours() - birthDate.getHours();
-  let minutes = today.getMinutes() - birthDate.getMinutes();
-  let seconds = today.getSeconds() - birthDate.getSeconds();
-
-  if (months < 0 || (months === 0 && days < 0)) {
-    years--;
-    months += 12;
+  if (!match) {
+    throw new Error('Date of birth must use YYYY-MM-DD format');
   }
 
-  if (days < 0) {
-    const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, birthDate.getDate());
-    const daysInLastMonth = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-    days = daysInLastMonth - lastMonth.getDate() + today.getDate();
-    months--;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(year, month - 1, day);
+
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    throw new Error('Date of birth is invalid');
   }
 
-  if (hours < 0) {
-    days--;
-    hours += 24;
+  return date;
+};
+
+export const calculateExactAge = (dob: string, now: Date = new Date()): Age => {
+  const birthDate = parseDateOfBirth(dob);
+
+  if (birthDate.getTime() > now.getTime()) {
+    throw new Error('Date of birth cannot be in the future');
+  }
+
+  let years = now.getFullYear() - birthDate.getFullYear();
+  let months = now.getMonth() - birthDate.getMonth();
+  let days = now.getDate() - birthDate.getDate();
+  let hours = now.getHours() - birthDate.getHours();
+  let minutes = now.getMinutes() - birthDate.getMinutes();
+  let seconds = now.getSeconds() - birthDate.getSeconds();
+
+  if (seconds < 0) {
+    seconds += 60;
+    minutes--;
   }
 
   if (minutes < 0) {
-    hours--;
     minutes += 60;
+    hours--;
   }
 
-  if (seconds < 0) {
-    minutes--;
-    seconds += 60;
+  if (hours < 0) {
+    hours += 24;
+    days--;
+  }
+
+  if (days < 0) {
+    const daysInPreviousMonth = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      0
+    ).getDate();
+    days += daysInPreviousMonth;
+    months--;
+  }
+
+  if (months < 0) {
+    months += 12;
+    years--;
   }
 
   return { years, months, days, hours, minutes, seconds };
-}
-
-const dob = '1990-01-30';
-const exactAge = calculateExactAge(dob);
-console.log(`Exact Age: ${exactAge.years} years, ${exactAge.months} months, ${exactAge.days} days, ${exactAge.hours} hours, ${exactAge.minutes} minutes, ${exactAge.seconds} seconds`);
+};

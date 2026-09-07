@@ -1,4 +1,3 @@
-export * from './AbstractMenuItem';
 export * from './ChoiceQuestionForm';
 export * from './DateInputType';
 export * from './DateMinMaxValidator';
