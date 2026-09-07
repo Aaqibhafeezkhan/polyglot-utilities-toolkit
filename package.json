@@ -1,7 +1,7 @@
 {
-  "name": "polyglot-utilities",
+  "name": "polyglot-utilities-toolkit",
   "version": "1.0.0",
-  "description": "A collection of reusable utilities, helpers, models, validators, and problem-solving patterns across multiple languages.",
+  "description": "A reusable toolkit of utilities, helpers, validators, models, and problem-solving patterns across TypeScript, JavaScript, Python, and C++.",
   "private": true,
   "scripts": {
     "typecheck": "tsc --noEmit"
