@@ -1,26 +1,44 @@
-import * as React from "react";
+import * as React from 'react';
 
-const SessionTimeoutCounter = () => {
-  const initialTimer = window.sessionStorage.getItem("timer") ?? 300; // 60 * 5 = 300min
-  const timeoutId: any = React.useRef(null);
-  const [timer, setTimer]:any = React.useState(initialTimer);
+const DEFAULT_DURATION = 300;
+const STORAGE_KEY = 'timer';
 
-  const countTimer = React.useCallback(() => {
-    if (timer <= 0) {
-      window.sessionStorage.removeItem("timer");
-       } else {
-      setTimer(timer - 1);
-      window.sessionStorage.setItem("timer", timer);
+const SessionTimeoutCounter: React.FC = () => {
+  const [timer, setTimer] = React.useState<number>(() => {
+    if (typeof window === 'undefined') {
+      return DEFAULT_DURATION;
     }
-  }, [timer]);
+
+    const storedTimer = Number(window.sessionStorage.getItem(STORAGE_KEY));
+    return Number.isFinite(storedTimer) && storedTimer >= 0
+      ? Math.floor(storedTimer)
+      : DEFAULT_DURATION;
+  });
 
   React.useEffect(() => {
-    timeoutId.current = window.setTimeout(countTimer, 1000);
-    // cleanup function
-    return () => window.clearTimeout(timeoutId.current);
-  }, [timer, countTimer]);
+    if (timer <= 0) {
+      window.sessionStorage.removeItem(STORAGE_KEY);
+      return;
+    }
 
-  return <></>;
+    const timeoutId = window.setTimeout(() => {
+      setTimer((currentTimer) => {
+        const nextTimer = Math.max(currentTimer - 1, 0);
+
+        if (nextTimer === 0) {
+          window.sessionStorage.removeItem(STORAGE_KEY);
+        } else {
+          window.sessionStorage.setItem(STORAGE_KEY, String(nextTimer));
+        }
+
+        return nextTimer;
+      });
+    }, 1000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [timer]);
+
+  return null;
 };
 
 export default SessionTimeoutCounter;
