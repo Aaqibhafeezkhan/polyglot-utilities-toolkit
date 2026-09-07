@@ -1,11 +1,6 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
-#include <vector>
-
-int clamp(int value, int min, int max) {
-    return std::min(std::max(value, min), max);
-}
 
 bool isEmpty(const std::string& value) {
     return value.empty();
