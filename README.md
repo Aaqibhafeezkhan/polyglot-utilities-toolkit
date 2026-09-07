@@ -1,25 +1,58 @@
 # Polyglot Utilities Toolkit
 
-A practical collection of reusable utilities, helpers, models, validators, and small problem-solving patterns across the languages used in the toolkit.
+A language-agnostic collection of reusable utilities, helpers, validators, models, and problem-solving patterns.
+
+## Architecture
+
+The repository is organized by **capability first, language second**. A utility belongs to a domain such as strings, collections, numbers, dates, validation, forms, models, or runtime behavior; language-specific implementations live beneath that domain.
+
+```text
+utilities/
+├── collections/
+│   ├── cpp/
+│   ├── javascript/
+│   └── python/
+├── strings/
+│   ├── cpp/
+│   ├── javascript/
+│   └── python/
+├── numbers/
+│   ├── cpp/
+│   ├── javascript/
+│   └── python/
+├── dates/
+│   └── typescript/
+├── validation/
+│   └── typescript/
+├── forms/
+│   └── typescript/
+├── models/
+│   └── typescript/
+└── runtime/
+    └── typescript/
+
+ui/
+└── typescript/
+    └── react/
+```
+
+This keeps the utility domain stable as new languages are added. Adding Rust, Go, Java, C#, Kotlin, or another language means adding an implementation under an existing capability instead of creating another top-level language silo.
 
 ## Languages
 
-- TypeScript
-- JavaScript
-- Python
-- C++
+Current implementations include TypeScript, JavaScript, Python, and C++.
 
-## Structure
+## Design principles
 
-- `typescript/` contains the TypeScript utilities, models, validators, and React helpers.
-- `javascript/` contains JavaScript utility functions.
-- `python/` contains Python utility functions.
-- `cpp/` contains C++ utility functions.
-
-The collection is intentionally lightweight and focused on reusable building blocks rather than a single framework or language.
+- Capability is the primary organizational boundary.
+- Language is the implementation boundary.
+- Framework-specific code is isolated from general-purpose utilities.
+- Existing behavior is preserved when utilities are reorganized.
+- The structure is designed to grow without becoming language-centric.
+- Code remains free of comments.
 
 ## Development
 
-TypeScript tooling is available for the TypeScript portion of the repository. Other language examples can be compiled or run using their respective toolchains.
+TypeScript tooling is available for the TypeScript utilities and React integrations. JavaScript, Python, and C++ code can be run or compiled with their respective toolchains.
 
 Deployment is manual.

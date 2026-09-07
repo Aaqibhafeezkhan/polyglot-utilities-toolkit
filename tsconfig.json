@@ -10,6 +10,6 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["typescript/**/*.ts", "typescript/**/*.tsx"],
+  "include": ["utilities/**/*.ts", "utilities/**/*.tsx", "ui/**/*.ts", "ui/**/*.tsx"],
   "exclude": ["node_modules"]
 }
