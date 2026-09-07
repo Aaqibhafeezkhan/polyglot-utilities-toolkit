@@ -1,20 +1,20 @@
-# Polyglot Utilities
+# Polyglot Utilities Toolkit
 
-A practical collection of reusable utilities, helpers, models, validators, and small problem-solving patterns across the languages I use.
+A practical collection of reusable utilities, helpers, models, validators, and small problem-solving patterns across the languages used in the toolkit.
 
 ## Languages
 
 - TypeScript
 - JavaScript
-- Java
+- Python
 - C++
 
 ## Structure
 
-- TypeScript utilities and models at the repository root
-- Java utilities under `Java/`
-- JavaScript utilities under `JavaScript/`
-- C++ utilities under `Cpp/`
+- `typescript/` contains the TypeScript utilities, models, validators, and React helpers.
+- `javascript/` contains JavaScript utility functions.
+- `python/` contains Python utility functions.
+- `cpp/` contains C++ utility functions.
 
 The collection is intentionally lightweight and focused on reusable building blocks rather than a single framework or language.
 
