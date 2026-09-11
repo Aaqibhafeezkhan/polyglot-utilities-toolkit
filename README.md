@@ -42,11 +42,18 @@ This keeps the utility domain stable as new languages are added. Adding Rust, Go
 
 Current implementations include TypeScript, JavaScript, Python, and C++.
 
+## Contracts and contribution guidance
+
+- [Utility taxonomy](docs/utility-taxonomy.md) defines capability domains and placement rules.
+- [Cross-language contracts](docs/cross-language-contracts.md) defines shared behavioral expectations and intentional language differences.
+- [Contributor guide](docs/contributing.md) explains how to add capabilities, utilities, and languages.
+
 ## Design principles
 
 - Capability is the primary organizational boundary.
 - Language is the implementation boundary.
 - Framework-specific code is isolated from general-purpose utilities.
+- Equivalent utilities align semantically without forcing identical APIs.
 - Existing behavior is preserved when utilities are reorganized.
 - The structure is designed to grow without becoming language-centric.
 - Code remains free of comments.
