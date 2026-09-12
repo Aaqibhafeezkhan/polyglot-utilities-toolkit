@@ -47,6 +47,9 @@ Current implementations include TypeScript, JavaScript, Python, and C++.
 - [Utility taxonomy](docs/utility-taxonomy.md) defines capability domains and placement rules.
 - [Cross-language contracts](docs/cross-language-contracts.md) defines shared behavioral expectations and intentional language differences.
 - [Contributor guide](docs/contributing.md) explains how to add capabilities, utilities, and languages.
+- [Core utility coverage](docs/core-utility-coverage.md) tracks representative coverage across current languages.
+- [Dates and validation parity](docs/dates-validation-parity.md) defines date, validation, boundary, and timezone expectations.
+- [Models and framework boundaries](docs/models-and-framework-boundaries.md) defines shared model ownership, import boundaries, and UI isolation.
 
 ## Design principles
 
