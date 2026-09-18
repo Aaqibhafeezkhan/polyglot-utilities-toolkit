@@ -11,19 +11,28 @@ utilities/
 ├── collections/
 │   ├── cpp/
 │   ├── javascript/
-│   └── python/
+│   ├── python/
+│   └── java/
 ├── strings/
 │   ├── cpp/
 │   ├── javascript/
-│   └── python/
+│   ├── python/
+│   └── java/
 ├── numbers/
 │   ├── cpp/
 │   ├── javascript/
-│   └── python/
+│   ├── python/
+│   └── java/
 ├── dates/
-│   └── typescript/
+│   ├── typescript/
+│   ├── javascript/
+│   ├── python/
+│   └── java/
 ├── validation/
-│   └── typescript/
+│   ├── typescript/
+│   ├── javascript/
+│   ├── python/
+│   └── java/
 ├── forms/
 │   └── typescript/
 ├── models/
@@ -40,7 +49,7 @@ This keeps the utility domain stable as new languages are added. Adding Rust, Go
 
 ## Languages
 
-Current implementations include TypeScript, JavaScript, Python, and C++.
+Current implementations include TypeScript, JavaScript, Python, C++, and Java.
 
 ## Contracts and contribution guidance
 
@@ -50,6 +59,7 @@ Current implementations include TypeScript, JavaScript, Python, and C++.
 - [Core utility coverage](docs/core-utility-coverage.md) tracks representative coverage across current languages.
 - [Dates and validation parity](docs/dates-validation-parity.md) defines date, validation, boundary, and timezone expectations.
 - [Models and framework boundaries](docs/models-and-framework-boundaries.md) defines shared model ownership, import boundaries, and UI isolation.
+- [Java language expansion](docs/java-language-expansion.md) documents Java coverage, build paths, and intentional differences.
 
 ## Design principles
 
@@ -63,6 +73,8 @@ Current implementations include TypeScript, JavaScript, Python, and C++.
 
 ## Development
 
-TypeScript tooling is available for the TypeScript utilities and React integrations. JavaScript, Python, and C++ code can be run or compiled with their respective toolchains.
+TypeScript tooling is available for the TypeScript utilities and React integrations. JavaScript, Python, C++, and Java code can be run or compiled with their respective toolchains.
+
+Java capability implementations are independent Maven projects under the relevant capability directory and target Java 17.
 
 Deployment is manual.

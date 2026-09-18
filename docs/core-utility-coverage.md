@@ -4,21 +4,21 @@ Phase 4 expands reusable coverage across the existing capability domains without
 
 ## Collections
 
-JavaScript, Python, and C++ provide collection helpers for common operations such as uniqueness, aggregation, and averages. Existing language-specific names remain idiomatic while equivalent behavior follows the cross-language contracts.
+JavaScript, Python, C++, and Java provide collection helpers for common operations such as uniqueness, aggregation, and averages. Existing language-specific names remain idiomatic while equivalent behavior follows the cross-language contracts.
 
 ## Strings
 
-JavaScript and Python provide reusable string helpers for empty-value detection, capitalization, reversal, email-shape validation, whitespace normalization, and title casing. C++ provides reusable case conversion helpers.
+JavaScript, Python, and Java provide reusable string helpers for empty-value detection, capitalization, reversal, email-shape validation, whitespace normalization, and title casing. C++ provides reusable case conversion helpers.
 
 ## Numbers
 
-JavaScript and Python provide `clamp`, numeric detection, minimum, and maximum helpers. C++ now provides numeric detection plus minimum and maximum helpers under the same capability domain.
+JavaScript, Python, and Java provide `clamp`, numeric detection, minimum, and maximum helpers. C++ now provides numeric detection plus minimum and maximum helpers under the same capability domain.
 
 For empty collections, minimum and maximum return the language-appropriate absence representation: `undefined` in JavaScript, `None` in Python, and `0` in the current C++ integer utility. This intentional C++ difference follows the repository contract guidance rather than pretending the type systems are identical.
 
 ## Dates and validation
 
-The existing TypeScript date and validation capabilities remain reusable and separate from framework-specific integrations. Phase 4 does not redesign those domains.
+Java, JavaScript, Python, and TypeScript now provide reusable date and validation capabilities. Java date and validation utilities remain independent from framework-specific integrations.
 
 ## Forms, models, runtime, and UI
 
