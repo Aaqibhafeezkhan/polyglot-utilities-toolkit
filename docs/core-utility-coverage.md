@@ -1,38 +1,25 @@
 # Core Utility Coverage
 
-Phase 4 expands reusable coverage across the existing capability domains without introducing language-level silos.
+Phase 4 expands reusable coverage across the existing capability domains without changing the capability-first architecture.
 
 ## Collections
 
-JavaScript, Python, C++, and Java provide collection helpers for common operations such as uniqueness, aggregation, and averages. Existing language-specific names remain idiomatic while equivalent behavior follows the cross-language contracts.
+JavaScript, Python, C++, Java, Go, and Rust provide collection helpers for common operations such as uniqueness, grouping, aggregation, and averages. Existing language-specific names remain idiomatic while equivalent behavior follows the cross-language contracts.
 
 ## Strings
 
-JavaScript, Python, and Java provide reusable string helpers for empty-value detection, capitalization, reversal, email-shape validation, whitespace normalization, and title casing. C++ provides reusable case conversion helpers.
+JavaScript, Python, Java, Go, and Rust provide reusable string helpers for empty-value detection, capitalization, reversal, email-shape validation, whitespace normalization, and title casing. C++ provides reusable case conversion helpers.
 
 ## Numbers
 
-JavaScript, Python, and Java provide `clamp`, numeric detection, minimum, and maximum helpers. C++ now provides numeric detection plus minimum and maximum helpers under the same capability domain.
+JavaScript, Python, Java, Go, and Rust provide clamp, numeric detection, minimum, and maximum helpers. C++ provides numeric detection plus minimum and maximum helpers under the same capability domain.
 
-For empty collections, minimum and maximum return the language-appropriate absence representation: `undefined` in JavaScript, `None` in Python, and `0` in the current C++ integer utility. This intentional C++ difference follows the repository contract guidance rather than pretending the type systems are identical.
+For empty collections, minimum and maximum use language-appropriate absence representations where available.
 
 ## Dates and validation
 
-Java, JavaScript, Python, and TypeScript now provide reusable date and validation capabilities. Java date and validation utilities remain independent from framework-specific integrations.
+Java, Go, Rust, JavaScript, Python, and TypeScript provide reusable date and validation capabilities. Go and Rust date implementations remain independent from framework-specific integrations and document their standard-library differences.
 
 ## Forms, models, runtime, and UI
 
-These domains remain scoped to their existing responsibilities. Framework-specific UI code remains outside general-purpose utilities.
-
-## Expansion rule
-
-When adding a core utility:
-
-1. Identify the capability first.
-2. Reuse an existing capability domain when the behavior fits.
-3. Add the implementation under the relevant language directory.
-4. Follow an existing cross-language contract when an equivalent utility exists.
-5. Preserve language-appropriate naming and idioms.
-6. Add a new capability only when the behavior cannot be represented cleanly by an existing domain.
-
-The goal is useful reusable coverage, not maximum function count.
+These domains remain intentionally separate from general-purpose utility implementations. Language expansion should not move framework-specific concerns into the shared capability layer.
