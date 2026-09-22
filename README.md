@@ -13,6 +13,7 @@ The repository is organized by **capability first, language second**. A utility 
     │   ├── python/
     │   ├── java/
     │   ├── go/
+    │   ├── kotlin/
     │   └── rust/
     ├── strings/
     │   ├── cpp/
@@ -20,6 +21,7 @@ The repository is organized by **capability first, language second**. A utility 
     │   ├── python/
     │   ├── java/
     │   ├── go/
+    │   ├── kotlin/
     │   └── rust/
     ├── numbers/
     │   ├── cpp/
@@ -27,13 +29,14 @@ The repository is organized by **capability first, language second**. A utility 
     │   ├── python/
     │   ├── java/
     │   ├── go/
+    │   ├── kotlin/
     │   └── rust/
     ├── dates/
-    │   ├── typescript/
     │   ├── javascript/
     │   ├── python/
     │   ├── java/
     │   ├── go/
+    │   ├── kotlin/
     │   └── rust/
     ├── validation/
     │   ├── typescript/
@@ -41,6 +44,7 @@ The repository is organized by **capability first, language second**. A utility 
     │   ├── python/
     │   ├── java/
     │   ├── go/
+    │   ├── kotlin/
     │   └── rust/
     ├── forms/
     │   └── typescript/
@@ -53,18 +57,20 @@ This keeps the utility domain stable as new languages are added. Adding another 
 
 ## Languages
 
-Current implementations include TypeScript, JavaScript, Python, C++, Java, Go, and Rust.
+Current implementations include TypeScript, JavaScript, Python, C++, Java, Go, Rust, C#, and Kotlin.
 
 ## Contracts and contribution guidance
 
 - Utility taxonomy: docs/utility-taxonomy.md
 - Cross-language contracts: docs/cross-language-contracts.md
+- Cross-language test matrix: docs/cross-language-test-matrix.md
 - Contributor guide: docs/contributing.md
 - Core utility coverage: docs/core-utility-coverage.md
 - Dates and validation parity: docs/dates-validation-parity.md
 - Models and framework boundaries: docs/models-and-framework-boundaries.md
 - Java language expansion: docs/java-language-expansion.md
 - Go and Rust language expansion: docs/go-rust-language-expansion.md
+- C# and Kotlin language expansion: docs/csharp-kotlin-language-expansion.md
 
 ## Design principles
 
@@ -78,8 +84,14 @@ Current implementations include TypeScript, JavaScript, Python, C++, Java, Go, a
 
 ## Development
 
-TypeScript tooling is available for the TypeScript utilities and React integrations. JavaScript, Python, C++, Java, Go, and Rust code can be run or compiled with their respective toolchains.
+TypeScript tooling is available for the TypeScript utilities and React integrations. JavaScript, Python, C++, Java, Go, Rust, C#, and Kotlin code can be run or compiled with their respective toolchains.
 
-Java capability implementations are independent Maven projects under the relevant capability directory and target Java 17. Go capability implementations are independent Go modules. Rust capability implementations are independent Cargo packages.
+Java capability implementations are independent Maven projects under the relevant capability directory and target Java 17. Go capability implementations are independent Go modules. Rust capability implementations are independent Cargo packages. C# capability implementations are independent .NET 8 projects. Kotlin capability implementations are independent JVM projects using Gradle Kotlin DSL.
+
+## Compatibility testing
+
+The repository has a manual cross-language compatibility matrix covering the equivalent core utilities in collections, strings, numbers, dates, and validation.
+
+See docs/cross-language-test-matrix.md for the canonical cases, language runners, compatibility rules, and manual verification commands.
 
 Deployment is manual.
