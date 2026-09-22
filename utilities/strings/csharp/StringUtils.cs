@@ -50,7 +50,7 @@ public static class StringUtils
 
     public static string? NormalizeWhitespace(string? value)
     {
-        return value is null ? null : Regex.Replace(value.Trim(), @"\\s+", " ");
+        return value is null ? null : Regex.Replace(value.Trim(), @"\s+", " ");
     }
 
     public static string? ToTitleCase(string? value)

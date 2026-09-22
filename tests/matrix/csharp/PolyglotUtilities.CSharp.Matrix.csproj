@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../utilities/collections/csharp/CollectionUtils.cs" />
+    <Compile Include="../../../utilities/strings/csharp/StringUtils.cs" />
+    <Compile Include="../../../utilities/numbers/csharp/NumberUtils.cs" />
+    <Compile Include="../../../utilities/dates/csharp/DateUtils.cs" />
+    <Compile Include="../../../utilities/validation/csharp/ValidationUtils.cs" />
+  </ItemGroup>
+</Project>
