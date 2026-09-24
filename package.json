@@ -4,12 +4,14 @@
   "description": "A reusable, capability-first toolkit of utilities, helpers, validators, models, and problem-solving patterns across multiple programming languages.",
   "private": true,
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:typescript": "tsx tests/matrix/typescript/test_matrix.ts"
   },
   "devDependencies": {
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "@types/react-slick": "^0.23.13",
+    "tsx": "^4.19.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
