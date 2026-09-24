@@ -10,11 +10,11 @@ Every native runner uses the same cases. The runners assert behavior locally ins
 
 ## Strict parity languages
 
-The strict matrix currently covers JavaScript, Python, Java, Go, Rust, C#, and Kotlin.
+The strict matrix covers JavaScript, Python, Java, Go, Rust, C#, Kotlin, and TypeScript for the core collections, strings, and numbers capabilities.
 
-These languages expose equivalent core capabilities across the five domains.
+These languages expose equivalent core capabilities across the covered domains.
 
-C++ remains a partial-capability implementation and is tested separately for the behavior it currently exposes. TypeScript validation files are generated API models rather than an equivalent core validation implementation, so they are not part of the strict parity set.
+C++ remains a partial-capability implementation and is tested separately for the behavior it currently exposes. Existing TypeScript date and validation implementations remain outside the core parity runner because they use different APIs and framework-oriented boundaries.
 
 ## Expected semantics
 
@@ -34,6 +34,11 @@ C++ remains a partial-capability implementation and is tested separately for the
 ## Manual commands
 
 From the repository root:
+
+### TypeScript
+
+npm install
+npm run test:typescript
 
 ### Python
 
