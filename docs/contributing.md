@@ -4,6 +4,17 @@
 
 Read [docs/getting-started.md](getting-started.md) for the repository layout, language-specific commands, and representative examples.
 
+## Claim an issue
+
+1. Read the full issue and its acceptance criteria. Check the discussion and linked pull requests to make sure the work is still available.
+2. Comment on the issue with a short note that you would like to work on it. Mention your intended approach or ask any questions that need clarification.
+3. Wait for maintainer confirmation before starting substantial work. A comment does not automatically reserve an issue; maintainers may coordinate contributors to avoid duplicated effort.
+4. Keep the implementation scoped to that issue. Follow the capability-first layout and existing conventions rather than reorganizing unrelated code.
+5. Open one focused pull request for the issue. Link it with a closing reference such as `Closes #123`, summarize what changed, list the verification you performed, and note any limitations.
+6. Review your own diff before requesting review. Check for unrelated files, accidental generated artifacts, secrets, and changes outside the issue's acceptance criteria. Respond constructively to review feedback.
+
+If an issue is unclear, ask before making assumptions. If you can no longer continue, leave a comment so another contributor can pick it up.
+
 ## Add a utility to an existing capability
 
 1. Choose the narrowest capability from [docs/utility-taxonomy.md](utility-taxonomy.md).
