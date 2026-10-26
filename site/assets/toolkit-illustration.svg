@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 440" role="img" aria-labelledby="title desc">
+  <title id="title">Polyglot utility map</title>
+  <desc id="desc">A central toolkit node connects to collections, strings, dates, validation, and runtime utility cards, representing capabilities shared across programming languages.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edf6ee"/><stop offset="1" stop-color="#dcebe0"/></linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#367e55"/><stop offset="1" stop-color="#205239"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#193a25" flood-opacity=".10"/></filter>
+  </defs>
+  <rect x="10" y="10" width="500" height="420" rx="28" fill="url(#bg)"/>
+  <circle cx="260" cy="220" r="150" fill="#fff" opacity=".38"/>
+  <g fill="none" stroke="#78a887" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 7">
+    <path d="M260 185V103"/><path d="M310 210 385 154"/><path d="M310 250 385 305"/><path d="M260 275v67"/><path d="M210 250 130 305"/><path d="M210 210 130 154"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="186" y="174" width="148" height="104" rx="20" fill="url(#core)"/>
+    <rect x="201" y="189" width="118" height="74" rx="12" fill="#ffffff" fill-opacity=".09" stroke="#b9dfc3" stroke-opacity=".5"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m229 211-12 13 12 13M291 211l12 13-12 13M270 205l-12 39"/>
+  </g>
+  <text x="260" y="300" text-anchor="middle" fill="#234b31" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">ONE TOOLKIT</text>
+  <g filter="url(#shadow)">
+    <rect x="190" y="37" width="140" height="66" rx="13" fill="#fff"/><rect x="354" y="111" width="130" height="66" rx="13" fill="#fff"/>
+    <rect x="354" y="274" width="130" height="66" rx="13" fill="#fff"/><rect x="190" y="340" width="140" height="58" rx="13" fill="#fff"/>
+    <rect x="36" y="274" width="130" height="66" rx="13" fill="#fff"/><rect x="36" y="111" width="130" height="66" rx="13" fill="#fff"/>
+  </g>
+  <g font-family="ui-sans-serif,system-ui,sans-serif" fill="#293c2f" font-size="12" font-weight="700">
+    <text x="260" y="76" text-anchor="middle">Collections</text><text x="419" y="150" text-anchor="middle">Strings</text>
+    <text x="419" y="313" text-anchor="middle">Validation</text><text x="260" y="374" text-anchor="middle">Runtime</text>
+    <text x="101" y="313" text-anchor="middle">Dates</text><text x="101" y="150" text-anchor="middle">Numbers</text>
+  </g>
+  <g fill="none" stroke="#43825a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="204" y="49" width="16" height="16" rx="4"/><path d="M208 54h8M208 59h8"/>
+    <path d="M369 136h11m-6-5-5 5 5 5M386 136h12"/>
+    <circle cx="377" cy="299" r="8"/><path d="m373 299 3 3 5-6"/>
+    <path d="M210 361h16v15h-16zM214 356h16v15"/>
+    <circle cx="89" cy="298" r="7"/><path d="M89 294v5l4 2"/>
+    <path d="M85 135h13M85 141h9M85 147h11M85 153h7"/>
+  </g>
+  <g fill="#43825a">
+    <circle cx="260" cy="103" r="4"/><circle cx="385" cy="154" r="4"/><circle cx="385" cy="305" r="4"/><circle cx="260" cy="340" r="4"/><circle cx="130" cy="305" r="4"/><circle cx="130" cy="154" r="4"/>
+  </g>
+  <text x="260" y="417" text-anchor="middle" fill="#597360" font-family="ui-monospace,monospace" font-size="10">CAPABILITY → IMPLEMENTATION</text>
+</svg>
