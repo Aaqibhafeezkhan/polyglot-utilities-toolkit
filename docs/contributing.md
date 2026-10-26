@@ -2,18 +2,36 @@
 
 ## Start here
 
-Read [docs/getting-started.md](getting-started.md) for the repository layout, language-specific commands, and representative examples.
+Read [docs/getting-started.md](getting-started.md) for the repository layout, language-specific commands, and representative examples. Browse [open issues labeled for contributors](https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) to find a task. Issues labeled `good first issue`, `help wanted`, or `up-for-grabs` are invitations to contribute, not guarantees that work is unclaimed.
 
 ## Claim an issue
 
-1. Read the full issue and its acceptance criteria. Check the discussion and linked pull requests to make sure the work is still available.
-2. Comment on the issue with a short note that you would like to work on it. Mention your intended approach or ask any questions that need clarification.
-3. Wait for maintainer confirmation before starting substantial work. A comment does not automatically reserve an issue; maintainers may coordinate contributors to avoid duplicated effort.
-4. Keep the implementation scoped to that issue. Follow the capability-first layout and existing conventions rather than reorganizing unrelated code.
-5. Open one focused pull request for the issue. Link it with a closing reference such as `Closes #123`, summarize what changed, list the verification you performed, and note any limitations.
-6. Review your own diff before requesting review. Check for unrelated files, accidental generated artifacts, secrets, and changes outside the issue's acceptance criteria. Respond constructively to review feedback.
+To help more people contribute fairly, each contributor may have **one active claimed issue at a time** in this repository.
 
-If an issue is unclear, ask before making assumptions. If you can no longer continue, leave a comment so another contributor can pick it up.
+1. Choose one open issue and read its full description, acceptance criteria, discussion, and linked pull requests.
+2. Comment once with a brief proposed approach, relevant experience if useful, and any clarification questions. Please do not claim several issues “just in case.”
+3. Wait for maintainer confirmation before starting substantial work. A comment alone does not reserve an issue. The maintainer will confirm the claim or help you choose another task.
+4. Work on only that confirmed issue until its PR is merged, or until you tell the maintainer you are stepping back and the claim is released. After that, you may request another issue.
+5. If you need more time, post a short progress update on the issue. If you cannot continue, say so; releasing the claim lets another contributor participate.
+6. If another contributor is already confirmed or has a PR in progress, do not start duplicate work. Ask the maintainer if you have a distinct approach that could be useful.
+7. Keep the implementation scoped to the issue. Follow the capability-first layout and existing conventions rather than reorganizing unrelated code.
+8. Open one focused pull request for the issue. Link it with a closing reference such as `Closes #123`, summarize what changed, list the verification you performed, and note any limitations.
+9. Review your own diff before requesting review. Check for unrelated files, accidental generated artifacts, secrets, and changes outside the issue's acceptance criteria. Respond constructively to review feedback.
+
+### Claim coordination and inactivity
+
+- Claims are coordinated by maintainers so that opportunities are shared across contributors. Maintainers may ask for a progress update if a claim has been inactive for about 7 days.
+- If there is no update after a reasonable follow-up window, the maintainer may release the claim and reopen the work to others. Please communicate if life or work gets in the way; asking for more time is welcome.
+- Do not open a PR for work that is unrelated to the issue, and do not reserve issues through multiple comments or multiple accounts.
+- First-time contributors are welcome. You do not need to ask permission to discuss an issue or suggest an improvement; confirmation is only needed to coordinate implementation work.
+
+## Pull request expectations
+
+- Prefer one issue, one focused PR, and one implementation commit when practical.
+- Include the issue-closing reference, a concise summary, verification steps and results, and any known limitations.
+- Keep changes small and reviewable. Do not bundle unrelated fixes or broad refactors.
+- Self-review the complete diff before requesting maintainer review.
+- Follow repository conventions: no unnecessary code comments, no GitHub Actions, and manual deployment/verification practices where applicable.
 
 ## Add a utility to an existing capability
 
