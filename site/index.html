@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f4">
+  <meta name="description" content="A capability-first collection of reusable utilities across programming languages.">
+  <title>Polyglot Utilities Toolkit</title>
+  <style>
+    :root { color-scheme: light; --ink: #20231f; --muted: #666d65; --line: #e1e4dc; --paper: #fbfbf8; --accent: #35684a; --soft: #edf3ec; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid #92b99d; outline-offset: 3px; }
+    .wrap { width: min(920px, calc(100% - 40px)); margin-inline: auto; }
+    header { padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .brand { font-size: .9rem; font-weight: 700; letter-spacing: .02em; }
+    .brand span { color: var(--muted); font-weight: 500; }
+    main { padding: clamp(56px, 10vw, 104px) 0 72px; }
+    .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 14px 0 20px; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.04; letter-spacing: -.065em; font-weight: 750; }
+    .intro { max-width: 650px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.2rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 64px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); font-weight: 650; text-decoration: none; }
+    .button.primary { border-color: var(--accent); background: var(--accent); color: white; }
+    .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.025em; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .tile { padding: 20px; border: 1px solid var(--line); border-radius: 9px; background: #fff; }
+    .tile strong { display: block; margin-bottom: 6px; }
+    .tile p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .how { margin-top: 58px; padding: 26px; border: 1px solid var(--line); border-radius: 9px; background: var(--soft); }
+    .how p { margin: 8px 0 0; color: #465348; }
+    footer { padding: 24px 0 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+    @media (max-width: 650px) { .grid { grid-template-columns: 1fr; } .actions { margin-bottom: 48px; } .tile { padding: 17px; } }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">Polyglot Utilities <span>/ Toolkit</span></div>
+  </header>
+  <main class="wrap">
+    <p class="eyebrow">One capability · Many languages</p>
+    <h1>Small, reusable utilities. Consistent ideas across languages.</h1>
+    <p class="intro">A language-agnostic toolkit for everyday helpers, validation, data models, and problem-solving patterns. Find an implementation, compare approaches, or help make the collection better.</p>
+    <nav class="actions" aria-label="Primary links">
+      <a class="button primary" href="https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/issues?q=is%3Aissue+is%3Aopen+label%3Aup-for-grabs">Find an issue</a>
+      <a class="button" href="https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit">Browse source</a>
+      <a class="button" href="https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/blob/main/docs/getting-started.md">Get started</a>
+    </nav>
+
+    <section aria-labelledby="explore">
+      <div class="section-head">
+        <h2 id="explore">Explore the toolkit</h2>
+        <a href="https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/tree/main/utilities">All implementations ↗</a>
+      </div>
+      <div class="grid">
+        <article class="tile"><strong>Collections</strong><p>Work with lists, maps, sets, grouping, and common data transformations.</p></article>
+        <article class="tile"><strong>Strings & numbers</strong><p>Reusable text operations, numeric helpers, and predictable edge-case handling.</p></article>
+        <article class="tile"><strong>Dates & validation</strong><p>Practical date utilities and validation rules with cross-language contracts.</p></article>
+        <article class="tile"><strong>Models & forms</strong><p>TypeScript models, form helpers, and framework-aware boundaries.</p></article>
+        <article class="tile"><strong>Runtime helpers</strong><p>Small runtime-focused utilities kept separate from general-purpose code.</p></article>
+        <article class="tile"><strong>Cross-language examples</strong><p>Compare equivalent capabilities and see how implementations are organized.</p></article>
+      </div>
+    </section>
+
+    <section class="how" aria-labelledby="contribute">
+      <h2 id="contribute">Make your first contribution</h2>
+      <p>Pick one open issue tagged <code>good first issue</code>, <code>help wanted</code>, or <code>up-for-grabs</code>. Comment with your approach and wait for maintainer confirmation before starting substantial work. Keep it focused: one issue, one PR, self-review, and one implementation commit where practical.</p>
+      <p><a href="https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/blob/main/docs/contributing.md">Read the contribution guide ↗</a></p>
+    </section>
+  </main>
+  <footer><div class="wrap">Open source, capability-first, and built to grow. <a href="https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit">View on GitHub ↗</a></div></footer>
+</body>
+</html>
