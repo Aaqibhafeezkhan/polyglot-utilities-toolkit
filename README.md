@@ -2,7 +2,7 @@
 
 **One practical place to find small, reusable utilities across languages.** This project groups utilities by capability first and language second, so you can find the behavior you need without learning a separate repository for every language.
 
-[Browse the examples](examples/README.md) · [Find a starter task](https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/labels/good%20first%20issue) · [Contributing guide](docs/contributing.md)
+[Browse the examples](examples/README.md) · [Cross-language grouping tutorial](docs/tutorial-grouping-records.md) · [Find a starter task](https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/labels/good%20first%20issue) · [Contributing guide](docs/contributing.md)
 
 ## Try a utility in under a minute
 
@@ -95,3 +95,7 @@ First-time contributors are welcome. If an issue's scope is unclear, ask a quest
 TypeScript tooling is available for TypeScript utilities and React integrations. Other languages use their normal toolchains. Java capability implementations are independent Maven projects targeting Java 17; Go implementations are independent Go modules; Rust implementations are independent Cargo packages; C# projects target .NET 8; and Kotlin projects use Gradle Kotlin DSL.
 
 Compatibility verification is currently manual. See the [test matrix guide](docs/cross-language-test-matrix.md) for canonical cases, runners, and language-specific verification.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). You may use, modify, and distribute the software subject to the license terms.
