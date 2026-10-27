@@ -1,88 +1,69 @@
 # Contributor Guide
 
-## Start here
+Thanks for considering a contribution. You can help without knowing every language in the repository. The easiest contributions are focused on one file, one utility, one language, or one example.
 
-Read [docs/getting-started.md](getting-started.md) for the repository layout, language-specific commands, and representative examples. Browse [open issues labeled for contributors](https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) to find a task. Issues labeled `good first issue`, `help wanted`, or `up-for-grabs` are invitations to contribute, not guarantees that work is unclaimed.
+## Choose a task
 
-## Claim an issue
+- [Good first issues](https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+- [Issues marked help wanted](https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+- [All open issues](https://github.com/Aaqibhafeezkhan/polyglot-utilities-toolkit/issues)
 
-To help more people contribute fairly, each contributor may have **one active claimed issue at a time** in this repository.
+Before starting, read the issue and check its comments and linked PRs to avoid duplicating work.
 
-1. Choose one open issue and read its full description, acceptance criteria, discussion, and linked pull requests.
-2. Comment once with a brief proposed approach, relevant experience if useful, and any clarification questions. Please do not claim several issues “just in case.”
-3. Wait for maintainer confirmation before starting substantial work. A comment alone does not reserve an issue. The maintainer will confirm the claim or help you choose another task.
-4. Work on only that confirmed issue until its PR is merged, or until you tell the maintainer you are stepping back and the claim is released. After that, you may request another issue.
-5. If you need more time, post a short progress update on the issue. If you cannot continue, say so; releasing the claim lets another contributor participate.
-6. If another contributor is already confirmed or has a PR in progress, do not start duplicate work. Ask the maintainer if you have a distinct approach that could be useful.
-7. Keep the implementation scoped to the issue. Follow the capability-first layout and existing conventions rather than reorganizing unrelated code.
-8. Open one focused pull request for the issue. Link it with a closing reference such as `Closes #123`, summarize what changed, list the verification you performed, and note any limitations.
-9. Review your own diff before requesting review. Check for unrelated files, accidental generated artifacts, secrets, and changes outside the issue's acceptance criteria. Respond constructively to review feedback.
+### Do I need to claim an issue first?
 
-### Claim coordination and inactivity
+- **Small, self-contained changes** such as a typo fix, a documentation clarification, or a missing example can be submitted directly as a PR.
+- **Implementation work or a change that may take substantial effort:** comment with your intended approach first. Wait for confirmation if the issue asks for coordination or another contributor may already be working on it.
+- Please do not reserve several issues at once. If you start work and cannot continue, leave a short update so someone else can pick it up.
 
-- Claims are coordinated by maintainers so that opportunities are shared across contributors. Maintainers may ask for a progress update if a claim has been inactive for about 7 days.
-- If there is no update after a reasonable follow-up window, the maintainer may release the claim and reopen the work to others. Please communicate if life or work gets in the way; asking for more time is welcome.
-- Do not open a PR for work that is unrelated to the issue, and do not reserve issues through multiple comments or multiple accounts.
-- First-time contributors are welcome. You do not need to ask permission to discuss an issue or suggest an improvement; confirmation is only needed to coordinate implementation work.
+A comment is welcome, but you do not need maintainer permission just to ask a question or propose a small documentation improvement.
 
-## Pull request expectations
+## A quick first contribution
 
-- Prefer one issue, one focused PR, and one implementation commit when practical.
-- Include the issue-closing reference, a concise summary, verification steps and results, and any known limitations.
-- Keep changes small and reviewable. Do not bundle unrelated fixes or broad refactors.
-- Self-review the complete diff before requesting maintainer review.
-- Follow repository conventions: no unnecessary code comments, no GitHub Actions, and manual deployment/verification practices where applicable.
+1. Fork the repository and clone your fork.
+2. Pick one capability and one language, or a single documentation file.
+3. Make the smallest change that meets the issue's goal.
+4. Run the relevant verification command from the repository root or the language-specific project directory.
+5. Review `git diff` and remove unrelated changes.
+6. Open one focused PR. Link the issue when relevant, summarize the change, and include the verification command and result.
 
-## Add a utility to an existing capability
+You do not need to install every language toolchain. Start with [Getting Started](getting-started.md) and run only the check relevant to your change. If a toolchain is unavailable, state that clearly in the PR instead of claiming a test passed.
 
-1. Choose the narrowest capability from [docs/utility-taxonomy.md](utility-taxonomy.md).
-2. Choose the implementation language.
-3. Add the utility under `utilities/<capability>/<language>/`.
-4. Define observable behavior using [docs/cross-language-contracts.md](cross-language-contracts.md).
-5. Preserve existing behavior when extending an existing utility.
-6. Keep framework dependencies out of general-purpose utility directories.
-7. Add representative edge cases for empty, invalid, and boundary inputs when tests exist for that language.
-8. Update documentation when the utility introduces a new contract or intentional language difference.
-9. Add or update a practical example when the public usage is not obvious from an existing example.
+## Repository structure
 
-## Add a new capability
+Utilities are organized by capability first and language second. For example:
 
-Create a new capability only when an existing domain cannot describe the utility cleanly. Document its purpose, boundary, and representative behavior in the taxonomy before adding implementations.
+```text
+utilities/collections/javascript/
+utilities/collections/python/
+utilities/strings/javascript/
+utilities/strings/python/
+```
 
-## Add a new language
+Add an implementation under the existing capability when possible. Add a new capability only when the utility does not fit the current taxonomy.
 
-A language addition should extend existing capabilities rather than create a language-first top-level structure. Start with the capability that has the clearest reusable value, then add further implementations incrementally.
+## Implementation guidelines
 
-Use the language's normal build, test, package, and naming conventions. Do not force another language to imitate TypeScript or JavaScript syntax.
+- Preserve the existing public behavior unless the issue explicitly requests a change.
+- Follow the language's normal naming, formatting, build, and test conventions.
+- Keep framework-specific dependencies out of general-purpose utility directories.
+- Include meaningful empty, invalid, and boundary cases when the relevant test harness exists.
+- Keep cross-language behavior aligned where that is the intended contract, and document meaningful language-specific differences.
+- Keep code free of unnecessary comments, consistent with the repository convention.
+- Do not add GitHub Actions; verification and deployment are currently manual.
 
-## Examples
+## Pull request checklist
 
-Examples live under `examples/` and are organized by capability. A cross-language example should demonstrate the same observable utility concept in the languages where the capability is supported.
+Before requesting review:
 
-Examples should:
+- [ ] The change addresses one issue or one clearly scoped improvement.
+- [ ] The diff contains no unrelated files or generated artifacts.
+- [ ] The relevant verification command and its result are included.
+- [ ] Documentation or examples are updated if public behavior needs explanation.
+- [ ] The PR description explains any known limitation or verification not performed.
 
-- use small, realistic inputs
-- show the public utility surface rather than internal implementation details
-- avoid personal or environment-specific information
-- avoid unrelated application boilerplate
-- identify intentional language-specific differences when they affect the result
+Prefer one focused PR and one implementation commit when practical. Keep the change small enough that another person can understand it quickly.
 
-## Contract checklist
+## Need help?
 
-Before submitting a change, verify:
-
-- Inputs and outputs are clear.
-- Empty input behavior is intentional.
-- Invalid input behavior is intentional.
-- Boundary behavior is intentional.
-- Mutation behavior is clear.
-- Ordering behavior is clear when relevant.
-- Language-specific differences are documented when they affect callers.
-
-## Framework boundary
-
-Framework-specific code belongs under `ui/` or another explicitly framework-scoped location. General-purpose utilities should not import framework code merely for convenience.
-
-## Repository constraints
-
-Keep the repository free of unnecessary code comments, do not add GitHub Actions, and keep deployment manual. Changes should remain focused on the capability or language being extended.
+If you are unsure which file to edit or which command to run, ask in the issue or PR. A short question is better than spending hours guessing.
