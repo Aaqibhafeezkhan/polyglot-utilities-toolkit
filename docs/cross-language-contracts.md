@@ -28,6 +28,17 @@ Examples of aligned behavior:
 - Deduplication documents whether the first or last occurrence is retained.
 - Partitioning documents the treatment of empty collections.
 
+#### Empty-input behavior across operations
+
+- **Deduplication / Unique**: Passing an empty collection returns an empty collection of the same collection type (`[]` in JS/TS/Python, empty slice in Go, empty `List` in Java/C#/Kotlin, empty `Vec` in Rust, empty `std::vector` in C++).
+- **Grouping (`groupBy` / `group_by`)**: Passing an empty collection produces an empty map/dictionary (`{}` in JS/TS/Python, empty `map` in Go, empty `Map` in Java/Kotlin, empty `Dictionary` in C#, empty `HashMap` in Rust).
+- **Aggregation (`sum` and `average`)**:
+  - `sum` on an empty collection evaluates to `0` / `0.0`.
+  - `average` on an empty collection returns `0` / `0.0` rather than raising a division-by-zero exception or returning `NaN`.
+- **Minimum and Maximum (`minValue`, `maxValue`)**:
+  - Most language implementations return their idiomatic absent representation: `undefined` (JavaScript, TypeScript), `None` (Python), `null` (Java, C#, Kotlin), `nil` pointer (Go), or `None` option (Rust).
+  - *Intentional language-specific difference*: In C++, where scalar values without optional wrappers are returned, empty inputs evaluate to `0`.
+
 ### Strings
 
 String utilities should treat their input as a value and should not mutate caller-owned state. Empty strings and whitespace-only strings must have explicit behavior. Unicode-sensitive behavior must not be described as ASCII-only unless that restriction is intentional.
@@ -37,6 +48,24 @@ Examples of aligned behavior:
 - Normalization documents which transformations are applied.
 - Truncation documents whether the limit counts characters, code points, or another unit.
 - Parsing distinguishes malformed input from a valid empty value.
+
+#### Unicode string reversal and supported units
+
+String reversal implementations across the repository operate at different units of representation depending on the language runtime and standard library capabilities:
+
+- **Unicode Code Points / Scalar Values**:
+  The strict-parity matrix fixture in [`tests/matrix/fixtures/core-utility-cases.json`](../tests/matrix/fixtures/core-utility-cases.json) specifies the canonical case `"A🙂B"` $\rightarrow$ `"B🙂A"`. The following implementations iterate by Unicode scalar values / code points so surrogate pairs or multi-byte scalar sequences are preserved intact without corrupting supplementary plane characters:
+  - **JavaScript & TypeScript**: Spread operator `[...value].reverse().join('')` iterates by UTF-16 code points.
+  - **Python**: In Python 3, strings represent Unicode code points, and slicing `value[::-1]` reverses code points cleanly.
+  - **Go**: Operates over UTF-8 runes (`[]rune(value)`).
+  - **Rust**: Reverses Unicode scalar values via `value.chars().rev().collect()`.
+  - **Java**: Streams Unicode code points with `value.codePoints().mapToObj(...).reduce(...)`.
+  - **Kotlin**: Reverses array of Unicode code points via `value.codePoints().toArray()`.
+  - **C#**: Reverses `value.EnumerateRunes()` to preserve complete Unicode scalar runes.
+- **Bytes (ASCII / Byte-oriented)**:
+  - **C++**: The current partial implementation in `utilities/strings/cpp/basic_utils.cpp` uses `std::reverse(result.begin(), result.end())` on `std::string`, which reverses individual `char` bytes. It is verified for ASCII strings (`"ABC"` $\rightarrow$ `"CBA"`) in `tests/matrix/cpp/matrix_test.cpp`. It does not support multi-byte UTF-8 code point or grapheme cluster reversal.
+- **Grapheme Clusters**:
+  - None of the standard string reversal helpers currently use extended grapheme cluster breaking (e.g. combining accent marks, emoji modifier sequences, or ZWJ sequences). Characters with combining marks will invert relative to their base characters unless normalized or handled by external grapheme segmentation libraries.
 
 ### Numbers
 

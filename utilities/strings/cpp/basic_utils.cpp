@@ -2,6 +2,9 @@
 #include <cctype>
 #include <string>
 
+// Note: This implementation performs byte-level ASCII case conversion using
+// std::toupper on unsigned char. Multi-byte UTF-8 sequences and non-ASCII
+// code points are left untouched as individual bytes without Unicode case mapping.
 bool isEmpty(const std::string& value) {
     return value.empty();
 }
