@@ -14,9 +14,21 @@ bool isNumeric(const std::string& value);
 
 int main() {
     assert(uniqueValues({3, 1, 3, 2, 1}) == std::vector<int>({1, 2, 3}));
+    assert(uniqueValues({}).empty());
+    assert(uniqueValues({5}) == std::vector<int>({5}));
+    assert(uniqueValues({2, 2, 2}) == std::vector<int>({2}));
+    assert(uniqueValues({4, 3, 2, 1}) == std::vector<int>({1, 2, 3, 4}));
+
     assert(sum({1, 2, 3, 4}) == 10);
+    assert(sum({}) == 0);
+    assert(sum({-5, 5}) == 0);
+    assert(sum({-2, -3, 5}) == 0);
+
     assert(average({1, 2, 3, 4}) == 2.5);
     assert(average({}) == 0.0);
+    assert(average({7}) == 7.0);
+    assert(average({-2, 2}) == 0.0);
+
     assert(isEmpty(""));
     assert(capitalize("hello") == "Hello");
     assert(reverseString("ABC") == "CBA");
