@@ -49,6 +49,24 @@ Examples of aligned behavior:
 - Truncation documents whether the limit counts characters, code points, or another unit.
 - Parsing distinguishes malformed input from a valid empty value.
 
+#### Unicode string reversal and supported units
+
+String reversal implementations across the repository operate at different units of representation depending on the language runtime and standard library capabilities:
+
+- **Unicode Code Points / Scalar Values**:
+  The strict-parity matrix fixture in [`tests/matrix/fixtures/core-utility-cases.json`](../tests/matrix/fixtures/core-utility-cases.json) specifies the canonical case `"A🙂B"` $\rightarrow$ `"B🙂A"`. The following implementations iterate by Unicode scalar values / code points so surrogate pairs or multi-byte scalar sequences are preserved intact without corrupting supplementary plane characters:
+  - **JavaScript & TypeScript**: Spread operator `[...value].reverse().join('')` iterates by UTF-16 code points.
+  - **Python**: In Python 3, strings represent Unicode code points, and slicing `value[::-1]` reverses code points cleanly.
+  - **Go**: Operates over UTF-8 runes (`[]rune(value)`).
+  - **Rust**: Reverses Unicode scalar values via `value.chars().rev().collect()`.
+  - **Java**: Streams Unicode code points with `value.codePoints().mapToObj(...).reduce(...)`.
+  - **Kotlin**: Reverses array of Unicode code points via `value.codePoints().toArray()`.
+  - **C#**: Reverses `value.EnumerateRunes()` to preserve complete Unicode scalar runes.
+- **Bytes (ASCII / Byte-oriented)**:
+  - **C++**: The current partial implementation in `utilities/strings/cpp/basic_utils.cpp` uses `std::reverse(result.begin(), result.end())` on `std::string`, which reverses individual `char` bytes. It is verified for ASCII strings (`"ABC"` $\rightarrow$ `"CBA"`) in `tests/matrix/cpp/matrix_test.cpp`. It does not support multi-byte UTF-8 code point or grapheme cluster reversal.
+- **Grapheme Clusters**:
+  - None of the standard string reversal helpers currently use extended grapheme cluster breaking (e.g. combining accent marks, emoji modifier sequences, or ZWJ sequences). Characters with combining marks will invert relative to their base characters unless normalized or handled by external grapheme segmentation libraries.
+
 ### Numbers
 
 Numeric utilities should document boundary inclusion and invalid numeric input. Floating-point behavior should not be described as exact arithmetic when the language runtime uses binary floating point.
