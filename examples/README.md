@@ -88,6 +88,139 @@ println(CollectionUtils.unique(values))
 
 The source language keeps its normal collection types and naming conventions. The compatibility contract is the resulting behavior, not a shared API signature.
 
+## Strings: whitespace normalization
+
+The shared behavior is: collapse runs of whitespace characters into a single space and trim leading and trailing whitespace.
+
+### JavaScript
+
+```javascript
+import { normalizeWhitespace } from "../../utilities/strings/javascript/string_utils.js";
+
+const text = "  hello \t world  ";
+console.log(normalizeWhitespace(text));
+```
+
+Expected result:
+
+```text
+hello world
+```
+
+### Python
+
+```python
+from utilities.strings.python.string_utils import normalize_whitespace
+
+text = "  hello \t world  "
+print(normalize_whitespace(text))
+```
+
+Expected result:
+
+```text
+hello world
+```
+
+### TypeScript
+
+```typescript
+import { normalizeWhitespace } from "../../utilities/strings/typescript/stringUtils";
+
+const text = "  hello \t world  ";
+console.log(normalizeWhitespace(text));
+```
+
+Expected result:
+
+```text
+hello world
+```
+
+### Java
+
+```java
+import io.polyglotutilities.strings.StringUtils;
+
+var text = "  hello \t world  ";
+System.out.println(StringUtils.normalizeWhitespace(text));
+```
+
+Expected result:
+
+```text
+hello world
+```
+
+### Go
+
+```go
+package main
+
+import (
+    "fmt"
+    strings "polyglot-utilities/strings"
+)
+
+func main() {
+    text := "  hello \t world  "
+    fmt.Println(strings.NormalizeWhitespace(text))
+}
+```
+
+Expected result:
+
+```text
+hello world
+```
+
+### Rust
+
+```rust
+use strings_utils::normalize_whitespace;
+
+fn main() {
+    let text = "  hello \t world  ";
+    println!("{}", normalize_whitespace(text));
+}
+```
+
+Expected result:
+
+```text
+hello world
+```
+
+### C#
+
+```csharp
+using PolyglotUtilities.Strings;
+
+var text = "  hello \t world  ";
+Console.WriteLine(StringUtils.NormalizeWhitespace(text));
+```
+
+Expected result:
+
+```text
+hello world
+```
+
+### Kotlin
+
+```kotlin
+import io.polyglotutilities.strings.StringUtils
+
+val text = "  hello \t world  "
+println(StringUtils.normalizeWhitespace(text))
+```
+
+Expected result:
+
+```text
+hello world
+```
+
 ## Where to find more examples
 
 - Core fixture cases: [tests/matrix/fixtures/core-utility-cases.json](../tests/matrix/fixtures/core-utility-cases.json)
