@@ -11,7 +11,7 @@ def load_module(path):
     spec.loader.exec_module(module)
     return module
 
-cases = json.loads((ROOT / "tests/matrix/fixtures/core-utility-cases.json").read_text())
+cases = json.loads((ROOT / "tests/matrix/fixtures/core-utility-cases.json").read_text(encoding="utf-8"))
 collections = load_module(ROOT / "utilities/collections/python/collection_utils.py")
 strings = load_module(ROOT / "utilities/strings/python/string_utils.py")
 numbers = load_module(ROOT / "utilities/numbers/python/basic_utils.py")
@@ -61,6 +61,40 @@ class CrossLanguageMatrixTest(unittest.TestCase):
         self.assertEqual(validation.is_within_range(*v["rangeLowBoundary"]["input"]), v["rangeLowBoundary"]["expected"])
         self.assertEqual(validation.is_within_range(*v["rangeHighBoundary"]["input"]), v["rangeHighBoundary"]["expected"])
         self.assertEqual(validation.is_within_range(*v["rangeOutside"]["input"]), v["rangeOutside"]["expected"])
+
+        # Extended regression coverage: is_non_empty
+        self.assertFalse(validation.is_non_empty(""))
+        self.assertFalse(validation.is_non_empty("   \t\n  "))
+        self.assertFalse(validation.is_non_empty(None))
+        self.assertFalse(validation.is_non_empty(0))
+        self.assertFalse(validation.is_non_empty([]))
+        self.assertTrue(validation.is_non_empty("a"))
+        self.assertTrue(validation.is_non_empty("  valid text  "))
+
+        # Extended regression coverage: is_email
+        self.assertFalse(validation.is_email(""))
+        self.assertFalse(validation.is_email(None))
+        self.assertFalse(validation.is_email(123))
+        self.assertFalse(validation.is_email("plainaddress"))
+        self.assertFalse(validation.is_email("@missingusername.com"))
+        self.assertFalse(validation.is_email("username@.com"))
+        self.assertFalse(validation.is_email("username@domain."))
+        self.assertFalse(validation.is_email("user@domain@domain.com"))
+        self.assertTrue(validation.is_email("test.user@sub.domain.org"))
+
+        # Extended regression coverage: is_within_range
+        self.assertTrue(validation.is_within_range(0, 0, 10))
+        self.assertTrue(validation.is_within_range(10, 0, 10))
+        self.assertTrue(validation.is_within_range(5.5, 0.0, 10.0))
+        self.assertTrue(validation.is_within_range(-5, -10, 0))
+        self.assertTrue(validation.is_within_range(7, 7, 7))
+        self.assertFalse(validation.is_within_range(-0.1, 0, 10))
+        self.assertFalse(validation.is_within_range(10.1, 0, 10))
+        # Non-coercing behavior
+        self.assertFalse(validation.is_within_range("5", 0, 10))
+        self.assertFalse(validation.is_within_range(True, 0, 10))
+        self.assertFalse(validation.is_within_range(False, 0, 10))
+        self.assertFalse(validation.is_within_range(None, 0, 10))
 
 if __name__ == "__main__":
     unittest.main()
