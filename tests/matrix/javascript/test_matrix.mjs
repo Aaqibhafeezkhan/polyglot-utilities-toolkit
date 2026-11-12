@@ -38,6 +38,7 @@ assert.equal(parseDate(cases.dates.invalid.input), undefined);
 assert.equal(daysBetween(cases.dates.daysBetween.start, cases.dates.daysBetween.end), cases.dates.daysBetween.expected);
 assert.ok(parseDate(cases.dates.localDateTime.input));
 
+// Validation: Canonical fixture cases
 assert.equal(isNonEmpty(cases.validation.nonEmpty.input), cases.validation.nonEmpty.expected);
 assert.equal(isNonEmpty(cases.validation.empty.input), cases.validation.empty.expected);
 assert.equal(isEmail(cases.validation.validEmail.input), cases.validation.validEmail.expected);
@@ -45,3 +46,52 @@ assert.equal(isEmail(cases.validation.invalidEmail.input), cases.validation.inva
 assert.equal(isWithinRange(...cases.validation.rangeLowBoundary.input), cases.validation.rangeLowBoundary.expected);
 assert.equal(isWithinRange(...cases.validation.rangeHighBoundary.input), cases.validation.rangeHighBoundary.expected);
 assert.equal(isWithinRange(...cases.validation.rangeOutside.input), cases.validation.rangeOutside.expected);
+
+// Validation: isNonEmpty non-coercion & boundary tests
+assert.equal(isNonEmpty(""), false);
+assert.equal(isNonEmpty("   "), false);
+assert.equal(isNonEmpty(" \t\n\r "), false);
+assert.equal(isNonEmpty(null), false);
+assert.equal(isNonEmpty(undefined), false);
+assert.equal(isNonEmpty(0), false);
+assert.equal(isNonEmpty(123), false);
+assert.equal(isNonEmpty(true), false);
+assert.equal(isNonEmpty(false), false);
+assert.equal(isNonEmpty([]), false);
+assert.equal(isNonEmpty({}), false);
+assert.equal(isNonEmpty("valid"), true);
+assert.equal(isNonEmpty("  valid  "), true);
+
+// Validation: isEmail non-coercion & boundary tests
+assert.equal(isEmail(""), false);
+assert.equal(isEmail("   "), false);
+assert.equal(isEmail(null), false);
+assert.equal(isEmail(undefined), false);
+assert.equal(isEmail(123), false);
+assert.equal(isEmail(true), false);
+assert.equal(isEmail({ email: "user@example.com" }), false);
+assert.equal(isEmail("user@"), false);
+assert.equal(isEmail("@example.com"), false);
+assert.equal(isEmail("user@example"), false);
+assert.equal(isEmail("user@example."), false);
+assert.equal(isEmail("user@@example.com"), false);
+assert.equal(isEmail("user.name+tag@sub.domain.org"), true);
+
+// Validation: isWithinRange non-coercion & boundary tests
+assert.equal(isWithinRange(0, 0, 10), true);
+assert.equal(isWithinRange(10, 0, 10), true);
+assert.equal(isWithinRange(5, 0, 10), true);
+assert.equal(isWithinRange(-5, -10, 0), true);
+assert.equal(isWithinRange(2.5, 0, 5), true);
+assert.equal(isWithinRange(11, 0, 10), false);
+assert.equal(isWithinRange(-1, 0, 10), false);
+// Non-coercion checks: strings, booleans, null, undefined, NaN, Infinity
+assert.equal(isWithinRange("5", 0, 10), false);
+assert.equal(isWithinRange("0", 0, 10), false);
+assert.equal(isWithinRange(true, 0, 10), false);
+assert.equal(isWithinRange(false, 0, 10), false);
+assert.equal(isWithinRange(null, 0, 10), false);
+assert.equal(isWithinRange(undefined, 0, 10), false);
+assert.equal(isWithinRange(NaN, 0, 10), false);
+assert.equal(isWithinRange(Infinity, 0, 10), false);
+assert.equal(isWithinRange(-Infinity, 0, 10), false);
