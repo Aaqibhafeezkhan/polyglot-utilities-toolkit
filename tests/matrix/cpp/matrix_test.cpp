@@ -1,4 +1,5 @@
 #include <cassert>
+#include <climits>
 #include <string>
 #include <vector>
 
@@ -60,9 +61,41 @@ int main() {
     // Strings: reverseString
     assert(reverseString("ABC") == "CBA");
 
-    // Numbers
+    // Numbers: minValue
     assert(minValue({4, 2, 7}) == 2);
+    assert(minValue({}) == 0);
+    assert(minValue({0}) == 0);
+    assert(minValue({-10, -5, -20}) == -20);
+    assert(minValue({-5, 0, 5}) == -5);
+    assert(minValue({4, 4, 4}) == 4);
+    assert(minValue({INT_MIN, 0, INT_MAX}) == INT_MIN);
+
+    // Numbers: maxValue
     assert(maxValue({4, 2, 7}) == 7);
+    assert(maxValue({}) == 0);
+    assert(maxValue({0}) == 0);
+    assert(maxValue({-10, -5, -20}) == -5);
+    assert(maxValue({-5, 0, 5}) == 5);
+    assert(maxValue({4, 4, 4}) == 4);
+    assert(maxValue({INT_MIN, 0, INT_MAX}) == INT_MAX);
+
+    // Numbers: isNumeric
     assert(isNumeric("12.5"));
     assert(!isNumeric("12x"));
+    assert(!isNumeric(""));
+    assert(isNumeric("0"));
+    assert(isNumeric("-0"));
+    assert(isNumeric("-42"));
+    assert(isNumeric("+42"));
+    assert(isNumeric("0.0"));
+    assert(isNumeric("-12.345"));
+    assert(isNumeric("1e5"));
+    assert(isNumeric("-2.5e-3"));
+    assert(!isNumeric(" "));
+    assert(!isNumeric("  12"));
+    assert(!isNumeric("12  "));
+    assert(!isNumeric("abc"));
+    assert(!isNumeric("."));
+    assert(!isNumeric("-"));
+    assert(!isNumeric("--5"));
 }
