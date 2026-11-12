@@ -29,8 +29,9 @@ int main() {
 
     assert(average({1, 2, 3, 4}) == 2.5);
     assert(average({}) == 0.0);
+    assert(average({7}) == 7.0);
+    assert(average({-2, 2}) == 0.0);
 
-    // Strings: isEmpty
     assert(isEmpty(""));
     assert(!isEmpty("text"));
 
