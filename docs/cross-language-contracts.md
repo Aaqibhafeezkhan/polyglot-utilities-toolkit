@@ -28,6 +28,17 @@ Examples of aligned behavior:
 - Deduplication documents whether the first or last occurrence is retained.
 - Partitioning documents the treatment of empty collections.
 
+#### Empty-input behavior across operations
+
+- **Deduplication / Unique**: Passing an empty collection returns an empty collection of the same collection type (`[]` in JS/TS/Python, empty slice in Go, empty `List` in Java/C#/Kotlin, empty `Vec` in Rust, empty `std::vector` in C++).
+- **Grouping (`groupBy` / `group_by`)**: Passing an empty collection produces an empty map/dictionary (`{}` in JS/TS/Python, empty `map` in Go, empty `Map` in Java/Kotlin, empty `Dictionary` in C#, empty `HashMap` in Rust).
+- **Aggregation (`sum` and `average`)**:
+  - `sum` on an empty collection evaluates to `0` / `0.0`.
+  - `average` on an empty collection returns `0` / `0.0` rather than raising a division-by-zero exception or returning `NaN`.
+- **Minimum and Maximum (`minValue`, `maxValue`)**:
+  - Most language implementations return their idiomatic absent representation: `undefined` (JavaScript, TypeScript), `None` (Python), `null` (Java, C#, Kotlin), `nil` pointer (Go), or `None` option (Rust).
+  - *Intentional language-specific difference*: In C++, where scalar values without optional wrappers are returned, empty inputs evaluate to `0`.
+
 ### Strings
 
 String utilities should treat their input as a value and should not mutate caller-owned state. Empty strings and whitespace-only strings must have explicit behavior. Unicode-sensitive behavior must not be described as ASCII-only unless that restriction is intentional.
